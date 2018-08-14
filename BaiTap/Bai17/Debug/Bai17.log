@@ -1,0 +1,4 @@
+﻿  TimSoDoiXung.cpp
+c:\users\lenovo\source\repos\baitap\bai17\timsodoixung.cpp(16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\lenovo\source\repos\baitap\bai17\timsodoixung.cpp(21): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+  Bai17.vcxproj -> C:\Users\Lenovo\source\repos\BaiTap\Debug\Bai17.exe

@@ -1,0 +1,5 @@
+﻿  Source.cpp
+c:\users\lenovo\source\repos\thu tuc - ham\baitapmang1chieu\source.cpp(15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\lenovo\source\repos\thu tuc - ham\baitapmang1chieu\source.cpp(21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\lenovo\source\repos\thu tuc - ham\baitapmang1chieu\source.cpp(29): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Baitapmang1chieu.vcxproj -> C:\Users\Lenovo\source\repos\Thu Tuc - Ham\x64\Debug\Baitapmang1chieu.exe

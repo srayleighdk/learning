@@ -1,0 +1,8 @@
+﻿  Source.cpp
+c:\users\lenovo\source\repos\thu tuc - ham\lession1\source.cpp(35): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+c:\users\lenovo\source\repos\thu tuc - ham\lession1\source.cpp(38): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+c:\users\lenovo\source\repos\thu tuc - ham\lession1\source.cpp(41): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+c:\users\lenovo\source\repos\thu tuc - ham\lession1\source.cpp(53): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\lenovo\source\repos\thu tuc - ham\lession1\source.cpp(54): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\lenovo\source\repos\thu tuc - ham\lession1\source.cpp(55): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Lession1.vcxproj -> C:\Users\Lenovo\source\repos\Thu Tuc - Ham\Debug\Lession1.exe

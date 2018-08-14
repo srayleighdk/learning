@@ -1,0 +1,3 @@
+﻿  Source.cpp
+c:\users\lenovo\source\repos\baitap\bai16\source.cpp(20): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Bai16.vcxproj -> C:\Users\Lenovo\source\repos\BaiTap\Debug\Bai16.exe

@@ -1,0 +1,7 @@
+﻿  Source.cpp
+c:\users\lenovo\source\repos\thu tuc - ham\project2\source.cpp(24): warning C4473: 'scanf_s' : not enough arguments passed for format string
+  c:\users\lenovo\source\repos\thu tuc - ham\project2\source.cpp(24): note: placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+  c:\users\lenovo\source\repos\thu tuc - ham\project2\source.cpp(24): note: the missing variadic argument 2 is required by format string '%c'
+  c:\users\lenovo\source\repos\thu tuc - ham\project2\source.cpp(24): note: this argument is used as a buffer size
+c:\users\lenovo\source\repos\thu tuc - ham\project2\source.cpp(18): warning C4715: 'biendoi': not all control paths return a value
+  Project2.vcxproj -> C:\Users\Lenovo\source\repos\Thu Tuc - Ham\Debug\Project2.exe

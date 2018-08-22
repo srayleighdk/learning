@@ -78,6 +78,54 @@ void LKvaDemChanTamGiacTrenDCC(int a[][MAX], int n)
 	}
 	printf_s("\nSo chan co trong tam giac la : %d", dem);
 }
+//Liệt kê và kiểm tra xem x có nằm trong tam giác dưới chéo chính
+void LKvaKTx(int a[][MAX], int n, int x)
+{
+	printf_s("\nCac phan tu tam giac duoi cheo chinh: ");
+	int check = 0;
+	for (int i = 1; i < n; i++)
+	{
+		for (int j = 0; j < i; j++)
+		{
+			printf_s("%4d", a[i][j]);
+			if (x == a[i][j])
+			{
+				check = 1;
+			}
+		}
+	}
+	if (check == 0)
+	{
+		printf_s("\nKhong tim thay!");
+	}
+	else
+	{
+		printf_s("\nCo tim thay!");
+	}
+}
+// Hàm duyệt tam giac tren chéo phụ
+void TamGiacTrenDCP(int a[][MAX], int n)
+{
+	printf_s("\nCac phan tu tam giac tren duong cheo phu la:");
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = 0; j < n - 1 - i; j++)
+		{
+			printf_s("%4d", a[i][j]);
+		}
+	}
+}
+void TamGiacDuoiDCP(int a[][MAX], int n)
+{
+	printf_s("\nCac phan tu tam giac duoi duong cheo phu la:");
+	for (int i = 1; i < n; i++)
+	{
+		for (int j = n - 1; j > n - 1 - i; j--)
+		{
+			printf_s("%4d", a[i][j]);
+		}
+	}
+}
 
 int main()
 {
@@ -96,6 +144,10 @@ int main()
 	TinhTongLietkeDCC(a, n);
 	MinMaxLietKeDCP(a, n); 
 	LKvaDemChanTamGiacTrenDCC(a, n);
+	int x = 9;
+	LKvaKTx(a, n, x);
+	TamGiacTrenDCP(a, n);
+	TamGiacDuoiDCP(a, n);
 	_getch();
 	return 0;
 }

@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <conio.h>
 #define MAX 100
 void NhapMang(int a[][MAX], int dong, int cot)
@@ -36,7 +36,70 @@ int TongBien(int a[][MAX], int dong, int cot)
 	}
 	return Tong;
 }
-
+//Đếm số dương trên mỗi dòng
+void SoDuongTrenMoiDong(int a[][MAX], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++)
+	{
+		int dem = 0;
+		for (int j = 0; j < cot; j++)
+		{
+			if (a[i][j] > 0)
+			{
+				dem++;
+			}
+		}
+		if (dem != 0)
+		{
+		printf_s("\ndong %d co so luong so duong la: %d", i, dem);
+		}
+		else
+		{
+			printf_s("\nKhong co so duong nao");
+		}
+	}
+}
+//Bai Tap: Tim phan tu Yen Ngua trong mang 2 chieu
+int TimMaxDong(int a[][MAX], int chisodong, int cot, int &vitricot)
+{
+	vitricot = 0;
+	int MaxDong = a[chisodong][0];
+	for (int i = 1; i < cot; i++)
+	{
+		if (a[chisodong][i] > MaxDong)
+		{
+			MaxDong = a[chisodong][i];
+			vitricot = i;
+		}
+	}
+	return MaxDong;
+}
+int TimMinCot(int a[][MAX], int dong, int chisocot)
+{
+	int MinCot = a[0][chisocot];
+	for (int i = 1; i < dong; i++)
+	{
+		if (a[i][chisocot] < MinCot)
+		{
+			MinCot = a[i][chisocot];
+		}
+	}
+	return MinCot;
+}
+void YenNgua(int a[][MAX], int dong, int cot)
+{
+	printf_s("\nPhan tu Yen Ngua la: ");
+	for (int i = 0; i < dong; i++)
+	{
+		int vitricot;
+		int MaxDong = TimMaxDong(a, i, cot, vitricot);
+		int MinCot = TimMinCot(a, dong, vitricot);
+		if (MaxDong == MinCot)
+		{
+			printf_s("%4d", MaxDong);
+		}
+	}
+}
 
 
 int main()
@@ -64,6 +127,7 @@ int main()
 	XuatMang(a, dong, cot);
 	int Tong = TongBien(a, dong, cot);
 	printf_s("\nTong bien la: %d", Tong);
+	YenNgua(a, dong, cot);
 
 	_getch();
 	return 0;

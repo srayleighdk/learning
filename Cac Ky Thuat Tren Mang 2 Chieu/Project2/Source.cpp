@@ -184,7 +184,7 @@ void XoaCot(int a[][MAX], int dong, int &cot, int vitricot)
 	}
 	cot--;
 }
-//Them dong
+//Them dong vao vi tri
 void ThemDongVaoViTri(int a[][MAX], int &dong, int cot, int b[], int vitridongthem)
 {
 	dong++;
@@ -195,6 +195,19 @@ void ThemDongVaoViTri(int a[][MAX], int &dong, int cot, int b[], int vitridongth
 	for (int j = dong - 1; j > vitridongthem; j--)
 	{
 		HoanVi2Dong(a, cot, j, j - 1);
+	}
+}
+//Them cot vao vi tri
+void ThemCotVaoViTri(int a[][MAX], int dong, int &cot, int c[], int vitricotthem)
+{
+	cot++;
+	for (int i = 0; i < dong; i++)
+	{
+		a[i][cot - 1] = c[i];
+	}
+	for (int j = cot - 1; j > vitricotthem; j--)
+	{
+		HoanVi2Cot(a, dong, j, j - 1);
 	}
 }
 int main()
@@ -244,6 +257,14 @@ int main()
 		scanf_s("%4d", &b[i]);
 	}
 	ThemDongVaoViTri(a, dong, cot, b, 2);
+	XuatMang(a, dong, cot);
+	int c[MAX];
+	for (int i = 0; i < dong; i++)
+	{
+		printf_s("\nNhap vap phan tu: ");
+		scanf_s("%4d", &c[i]);
+	}
+	ThemCotVaoViTri(a, dong, cot, c, 2);
 	XuatMang(a, dong, cot);
 	_getch();
 	return 0;

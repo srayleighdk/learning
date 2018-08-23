@@ -64,14 +64,14 @@ int KiemTraYenNgua(int a[][MAX], int dong, int cot, int chisodong, int chisocot)
 {
 	for (int i = 0; i < cot; i++)
 	{
-		if (a[chisodong][i] < a[chisodong][chisocot])
+		if (a[chisodong][i] > a[chisodong][chisocot])
 		{
 			return 0;
 		}
 	}
 	for (int j = 0; j < dong; j++)
 	{
-		if (a[j][chisocot] > a[chisodong][chisocot])
+		if (a[j][chisocot] < a[chisodong][chisocot])
 		{
 			return 0;
 		}

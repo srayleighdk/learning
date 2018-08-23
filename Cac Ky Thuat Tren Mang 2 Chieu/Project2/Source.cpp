@@ -210,6 +210,23 @@ void ThemCotVaoViTri(int a[][MAX], int dong, int &cot, int c[], int vitricotthem
 		HoanVi2Cot(a, dong, j, j - 1);
 	}
 }
+
+//Truyền vào 1 chỉ số dòng & cột cụ thể rồi in ra tất cả các phần tử nằm trên dòng, cột, 2 đường chéo đi ngang qua nó.
+void InThangNgangCheo(int a[MAX][MAX],int dong, int cot, int b, int c)
+{
+	a[b][c];
+	printf_s("\nCac phan tu nam tren dong di ngang qua a[%d][%d] la:", b, c);
+	for (int i = 0; i < cot; i++)
+	{
+		printf_s("a[%d][%d]   ", b, i);
+	}
+	printf_s("\nCac phan tu nam tren cot di ngang qua a[%d][%d] la: ", b, c);
+	for (int j = 0; j < dong; j++)
+	{
+		printf_s("a[%d][%d]   ", j, c);
+	}
+}
+
 int main()
 {
 	int a[MAX][MAX], dong, cot;
@@ -266,6 +283,7 @@ int main()
 	}
 	ThemCotVaoViTri(a, dong, cot, c, 2);
 	XuatMang(a, dong, cot);
+	InThangNgangCheo(a, dong, cot, 1, 2);
 	_getch();
 	return 0;
 }

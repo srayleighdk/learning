@@ -60,43 +60,35 @@ void SoDuongTrenMoiDong(int a[][MAX], int dong, int cot)
 	}
 }
 //Bai Tap: Tim phan tu Yen Ngua trong mang 2 chieu
-int TimMaxDong(int a[][MAX], int chisodong, int cot, int &vitricot)
+int KiemTraYenNgua(int a[][MAX], int dong, int cot, int chisodong, int chisocot)
 {
-	vitricot = 0;
-	int MaxDong = a[chisodong][0];
-	for (int i = 1; i < cot; i++)
+	for (int i = 0; i < cot; i++)
 	{
-		if (a[chisodong][i] > MaxDong)
+		if (a[chisodong][i] < a[chisodong][chisocot])
 		{
-			MaxDong = a[chisodong][i];
-			vitricot = i;
+			return 0;
 		}
 	}
-	return MaxDong;
-}
-int TimMinCot(int a[][MAX], int dong, int chisocot)
-{
-	int MinCot = a[0][chisocot];
-	for (int i = 1; i < dong; i++)
+	for (int j = 0; j < dong; j++)
 	{
-		if (a[i][chisocot] < MinCot)
+		if (a[j][chisocot] > a[chisodong][chisocot])
 		{
-			MinCot = a[i][chisocot];
+			return 0;
 		}
 	}
-	return MinCot;
+	return 1;
 }
-void YenNgua(int a[][MAX], int dong, int cot)
+void LKYenNgua(int a[][MAX], int dong, int cot)
 {
-	printf_s("\nPhan tu Yen Ngua la: ");
+	printf_s("\nCac phan tu yen ngua la: ");
 	for (int i = 0; i < dong; i++)
 	{
-		int vitricot;
-		int MaxDong = TimMaxDong(a, i, cot, vitricot);
-		int MinCot = TimMinCot(a, dong, vitricot);
-		if (MaxDong == MinCot)
+		for (int j = 0; j < cot; j++)
 		{
-			printf_s("%4d", MaxDong);
+			if (KiemTraYenNgua(a, dong, cot, i, j) == 1)
+			{
+				printf_s("%4d", a[i][j]);
+			}
 		}
 	}
 }
@@ -127,7 +119,7 @@ int main()
 	XuatMang(a, dong, cot);
 	int Tong = TongBien(a, dong, cot);
 	printf_s("\nTong bien la: %d", Tong);
-	YenNgua(a, dong, cot);
+	LKYenNgua(a, dong, cot);
 
 	_getch();
 	return 0;

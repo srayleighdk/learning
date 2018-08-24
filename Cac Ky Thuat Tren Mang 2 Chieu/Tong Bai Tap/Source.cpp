@@ -124,9 +124,9 @@ void LKChanDauCuoi(int a[][MAX], int dong, int cot)
 		break;
 	}
 	printf_s("\nSo chan cuoi cung xuat hien trong mang la: ");
-	for (int i = dong - 1; i > 0; i--)
+	for (int i = dong - 1; i >= 0; i--)
 	{
-		for (int j = cot - 1; j > 0; j--)
+		for (int j = cot - 1; j >= 0; j--)
 		{
 			if (a[i][j] % 2 == 0)
 			{
@@ -157,7 +157,72 @@ float TrungBinhCongDuong(int a[][MAX], int dong, int cot)
 	TBC = (float)Tong / dem;
 	return TBC;
 }
+//6/ Tính trung bình tích các số lẻ có trong mảng.
+float TrungBinhTichLe(int a[][MAX], int dong, int cot)
+{
+	int Tich = 1;
+	int dem = 0;
+	float TrungBinhTich;
+	for (int i = 0; i < dong; i++)
+	{
+		for (int j = 0; j < cot; j++)
+		{
+			if (a[i][j] % 2 != 0)
+			{
+				dem++;
+				Tich *= a[i][j];
+			}
+		}
+	}
+	TrungBinhTich = pow(Tich, (float)1 / dem);
+	return TrungBinhTich;
+}
+//7/ Tính tổng từng dòng trong mảng.
+int TinhTongDong(int a[][MAX], int dong, int cot, int chisodong)
+{
+	int Tong = 0;
+	for (int i = 0; i < cot; i++)
+	{
+		Tong += a[chisodong][i];
+	}
+	return Tong;
+}
+void TinhTongTungDongTrongMang(int a[][MAX], int dong, int cot)
+{
 
+	for (int i = 0; i < dong; i++)
+	{
+		int Tong = 0;
+		Tong = TinhTongDong(a, dong, cot, i);
+		printf_s("\nTong dong %d la: %d", i, Tong);
+	}
+}
+//Cách 2
+void TongTungDong(int a[][MAX], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++)
+	{
+		int Tong = 0;
+		for (int j = 0; j < cot; j++)
+		{
+			Tong += a[i][j];
+		}
+		printf_s("\nTong dong %d la: %d", i, Tong);
+	}
+}
+//8/ Tính tổng từng cột trong mảng.
+void TongTungCot(int a[][MAX], int dong, int cot)
+{
+	for (int i = 0; i < cot; i++)
+	{
+		int Tong = 0;
+		for (int j = 0; j < dong; j++)
+		{
+			Tong += a[j][i];
+		}
+		printf_s("\nTong cot %d la: %d", i, Tong);
+	}
+}
 
 int main()
 {
@@ -186,8 +251,13 @@ int main()
 	LKNguyenTo(a, dong, cot);
 	LKHoanThien(a, dong, cot);
 	LKChanDauCuoi(a, dong, cot);
-	float TBC = (TrungBinhCongDuong(a, dong, cot));
-	printf_s("\nTrung binh cong so duong co trong mang la: %f", TBC);
+	float TBCDuong = (TrungBinhCongDuong(a, dong, cot));
+	printf_s("\nTrung binh cong so duong co trong mang la: %f", TBCDuong);
+	float TBTLe = TrungBinhTichLe(a, dong, cot);
+	printf_s("\nTrung binh tich cac so le co trong mang la: %f", TBTLe);
+	TinhTongTungDongTrongMang(a, dong, cot);
+	TongTungDong(a, dong, cot);
+	TongTungCot(a, dong, cot);
 	_getch();
 	return 0;
 }

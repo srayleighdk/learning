@@ -351,6 +351,29 @@ void DemSoLuongCucTri(int a[][MAX], int dong, int cot)
 	}
 	printf_s("\nMang co so luong cuc tri la: %d", dem);
 }
+
+//Đếm số lượng các giá trị có trong màng hai chiều, lưu ý nếu có k phần tử bằng nhau thì ta chỉ tính một..
+int DemGiaTriPhanBiet(int a[][MAX], int dong, int cot)
+{
+	int dem = 1;
+	for (int i = 1; i < dong * cot; i++)
+	{
+		bool check = true;
+		for (int j = i - 1; j >= 0; j--)
+		{
+			if (a[i / cot][i % cot] == a[j / cot][j % cot])
+			{
+				check = false;
+				break;
+			}
+		}
+		if (check == true)
+		{
+			dem++;
+		}
+	}
+	return dem;
+}
 int main()
 {
 	int a[MAX][MAX], dong, cot;
@@ -413,6 +436,8 @@ int main()
 	//SapXepTangDanTrenTungDong(a, dong, cot);
 	//XuatMang(a, dong, cot);
 	DemSoLuongCucTri(a, dong, cot);
+	int demphanbiet = DemGiaTriPhanBiet(a, dong, cot);
+	printf_s("\nSo luong cac phan tu phan biet la: %d", demphanbiet);
 	_getch();
 	return 0;
 }

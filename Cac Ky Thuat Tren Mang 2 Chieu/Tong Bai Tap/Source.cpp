@@ -2,6 +2,7 @@
 #include <conio.h>
 #define MAX 100
 #include <math.h>
+#include <limits.h>
 void NhapMang(int a[][MAX], int dong, int cot)
 {
 	for (int i = 0; i < dong; i++)
@@ -231,14 +232,14 @@ void HoanVi(int &a, int &b)
 	a = b;
 	b = Temp;
 }
-void HoanViHaiDOng(int a[][MAX],int dong, int cot, int dong1, int dong2)
+void HoanViHaiDOng(int a[][MAX], int dong, int cot, int dong1, int dong2)
 {
 	for (int i = 0; i < cot; i++)
 	{
 		HoanVi(a[dong1][i], a[dong2][i]);
 	}
 }
-void ThemDongVaoMang(int a[][MAX],int b[], int &dong, int cot, int vitridongthem)
+void ThemDongVaoMang(int a[][MAX], int b[], int &dong, int cot, int vitridongthem)
 {
 	dong++;
 	for (int i = 0; i < cot; i++)
@@ -247,7 +248,7 @@ void ThemDongVaoMang(int a[][MAX],int b[], int &dong, int cot, int vitridongthem
 	}
 	for (int i = dong - 1; i > vitridongthem; i--)
 	{
-		HoanViHaiDOng(a,dong, cot, i, i - 1);
+		HoanViHaiDOng(a, dong, cot, i, i - 1);
 	}
 }
 //10/ Xóa 1 dòng trong mảng
@@ -269,7 +270,7 @@ void HoanViHaiCot(int a[][MAX], int dong, int cot1, int cot2)
 		HoanVi(a[i][cot1], a[i][cot2]);
 	}
 }
-void ThemCotVaoMang(int a[][MAX],int c[], int dong, int &cot, int vitricotthem)
+void ThemCotVaoMang(int a[][MAX], int c[], int dong, int &cot, int vitricotthem)
 {
 	cot++;
 	for (int i = 0; i < dong; i++)
@@ -308,6 +309,47 @@ void SapXepTangDanTrenTungDong(int a[][MAX], int dong, int cot)
 	{
 		SapXepTangDanTrenDong(a, i, cot);
 	}
+}
+
+//Dếm giá trị cực trị có trong mảng
+void DemSoLuongCucTri(int a[][MAX], int dong, int cot)
+{
+	printf_s("\nCac gia tri cuc tri la: ");
+	int dem = 0;
+	int Min = INT_MAX;
+	int Max = INT_MIN;
+	for (int i = 0; i < dong; i++)
+	{
+		for (int j = 0; j < cot; j++)
+		{
+			if ( (i + 1) < (dong - 1))
+			{
+				Max = a[i + 1][j] > Max ? a[i + 1][j] : Max;
+				Min = a[i + 1][j] < Min ? a[i + 1][j] : Min;
+			}
+			if (i - 1 >= 0)
+			{
+				Max = a[i - 1][j] > Max ? a[i - 1][j] : Max;
+				Min = a[i - 1][j] < Min ? a[i - 1][j] : Min;
+			}
+			if (j + 1 < cot - 1)
+			{
+				Max = a[i][j + 1] > Max ? a[i][j + 1] : Max;
+				Min = a[i][j + 1] < Min ? a[i][j + 1] : Min;
+			}
+			if (j - 1 >= 0)
+			{
+				Max = a[i][j - 1] > Max ? a[i][j - 1] : Max;
+				Min = a[i][j - 1] < Min ? a[i][j - 1] : Min;
+			}
+			if (a[i][j] > Max || a[i][j] < Min)
+			{
+				printf_s("%4d", a[i][j]);
+				dem++;
+			}
+		}
+	}
+	printf_s("\nMang co so luong cuc tri la: %d", dem);
 }
 int main()
 {
@@ -368,8 +410,9 @@ int main()
 	XoaCotTrenMang(a, dong, cot, 2);
 	printf_s("\nMang sau khi xoa cot o vi tri 2 la: \n");
 	XuatMang(a, dong, cot);*/
-	SapXepTangDanTrenTungDong(a, dong, cot);
-	XuatMang(a, dong, cot);
+	//SapXepTangDanTrenTungDong(a, dong, cot);
+	//XuatMang(a, dong, cot);
+	DemSoLuongCucTri(a, dong, cot);
 	_getch();
 	return 0;
 }

@@ -224,6 +224,91 @@ void TongTungCot(int a[][MAX], int dong, int cot)
 	}
 }
 
+//9/ Thêm 1 dòng mới vào vị trí vào mảng.
+void HoanVi(int &a, int &b)
+{
+	int Temp = a;
+	a = b;
+	b = Temp;
+}
+void HoanViHaiDOng(int a[][MAX],int dong, int cot, int dong1, int dong2)
+{
+	for (int i = 0; i < cot; i++)
+	{
+		HoanVi(a[dong1][i], a[dong2][i]);
+	}
+}
+void ThemDongVaoMang(int a[][MAX],int b[], int &dong, int cot, int vitridongthem)
+{
+	dong++;
+	for (int i = 0; i < cot; i++)
+	{
+		a[dong - 1][i] = b[i];
+	}
+	for (int i = dong - 1; i > vitridongthem; i--)
+	{
+		HoanViHaiDOng(a,dong, cot, i, i - 1);
+	}
+}
+//10/ Xóa 1 dòng trong mảng
+void XoaDOngTrenMang(int a[][MAX], int &dong, int cot, int vitridongxoa)
+{
+	for (int i = vitridongxoa; i < dong; i++)
+	{
+		HoanViHaiDOng(a, dong, cot, i, i + 1);
+	}
+	dong--;
+}
+
+//11/ Thêm 1 cột mới vào mảng.
+
+void HoanViHaiCot(int a[][MAX], int dong, int cot1, int cot2)
+{
+	for (int i = 0; i < dong; i++)
+	{
+		HoanVi(a[i][cot1], a[i][cot2]);
+	}
+}
+void ThemCotVaoMang(int a[][MAX],int c[], int dong, int &cot, int vitricotthem)
+{
+	cot++;
+	for (int i = 0; i < dong; i++)
+	{
+		a[i][cot - 1] = c[i];
+	}
+	for (int i = cot - 1; i > vitricotthem; i--)
+	{
+		HoanViHaiCot(a, dong, i, i - 1);
+	}
+}
+//12 / Xóa 1 cột trong mảng.
+void XoaCotTrenMang(int a[][MAX], int dong, int &cot, int vitricotxoa)
+{
+	for (int i = vitricotxoa; i < cot; i++)
+	{
+		HoanViHaiCot(a, dong, i, i + 1);
+	}
+	cot--;
+}
+
+//15/ Sắp xếp mảng tăng dần theo từng dòng
+void SapXepTangDanTrenDong(int a[][MAX], int chisodong, int cot)
+{
+	for (int i = 0; i < cot; i++)
+	{
+		if (a[chisodong][i] > a[chisodong][i + 1])
+		{
+			HoanVi(a[chisodong][i], a[chisodong][i + 1]);
+		}
+	}
+}
+void SapXepTangDanTrenTungDong(int a[][MAX], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++)
+	{
+		SapXepTangDanTrenDong(a, i, cot);
+	}
+}
 int main()
 {
 	int a[MAX][MAX], dong, cot;
@@ -247,7 +332,7 @@ int main()
 	} while (cot < 1 || cot > MAX);
 	NhapMang(a, dong, cot);
 	XuatMang(a, dong, cot);
-	LKChan(a, dong, cot);
+	/*LKChan(a, dong, cot);
 	LKNguyenTo(a, dong, cot);
 	LKHoanThien(a, dong, cot);
 	LKChanDauCuoi(a, dong, cot);
@@ -258,6 +343,33 @@ int main()
 	TinhTongTungDongTrongMang(a, dong, cot);
 	TongTungDong(a, dong, cot);
 	TongTungCot(a, dong, cot);
+
+	int b[MAX];
+	for (int i = 0; i < cot; i++)
+	{
+		printf_s("\nNhap phan tu vao mang: ");
+		scanf_s("%d", &b[i]);
+	}
+	ThemDongVaoMang(a, b, dong, cot, 0);
+	printf("\nMang sau khi them dong vao vi tri 0 la :\n ");
+	XuatMang(a, dong, cot);
+	XoaDOngTrenMang(a, dong, cot, 3);
+	printf_s("\nMang sau khi xoa dong o vi tri thu 3 la :\n");
+	XuatMang(a, dong, cot);
+	int c[MAX];
+	for (int j = 0; j < dong; j++)
+	{
+		printf_s("\nNhap phan tu vao cot them: ");
+		scanf_s("%d", &c[j]);
+	}
+	ThemCotVaoMang(a, c, dong, cot, 0);
+	printf_s("\nMang sau khi them cot vao vi tri 0 la :\n");
+	XuatMang(a, dong, cot);
+	XoaCotTrenMang(a, dong, cot, 2);
+	printf_s("\nMang sau khi xoa cot o vi tri 2 la: \n");
+	XuatMang(a, dong, cot);*/
+	SapXepTangDanTrenTungDong(a, dong, cot);
+	XuatMang(a, dong, cot);
 	_getch();
 	return 0;
 }

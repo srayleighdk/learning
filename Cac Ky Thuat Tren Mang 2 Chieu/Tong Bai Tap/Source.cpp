@@ -374,6 +374,12 @@ int DemGiaTriPhanBiet(int a[][MAX], int dong, int cot)
 	}
 	return dem;
 }
+
+// Bài Tập: Đếm số lượng giá trị hoàng hậu trên ma trận
+
+
+//Bài Tập: Đếm số lượng giá trị yên ngựa trong ma trận
+// Nhập vào k ( số lượng phần tử phân biệt ) , tìm phần tử lớn thứ k.
 int main()
 {
 	int a[MAX][MAX], dong, cot;

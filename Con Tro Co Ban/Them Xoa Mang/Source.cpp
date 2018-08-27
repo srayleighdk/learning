@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
 
@@ -58,6 +58,52 @@ int *TimMin_2(int *a, int n)
 	}
 	return Min;
 }
+
+// Viết hàm sắp xếp tăng dần bằng con trỏ....
+void HoanVi(int *a, int *b)
+{
+	int Temp = *a;
+	*a = *b;
+	*b = Temp;
+}
+void SapXepMang(int *a, int n, char phanbiet)
+{
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (phanbiet == 't' || phanbiet == 'T')
+			{
+				if (a[i] > a[j])
+				{
+					HoanVi(&a[i], &a[j]);
+				}
+			}
+			if (phanbiet == 'g' || phanbiet == 'G')
+			{
+				if (a[i] < a[j])
+				{
+					HoanVi(&a[i], &a[j]);
+				}
+			}
+		}
+	}
+}
+// Viết hàm thêm phần tử
+void ThemPhanTu(int *&a, int &n, int vitrithem, int phantuthem)
+{
+	realloc(a, (n + 1) * sizeof(int));
+	for (int i = n - 1; i >= vitrithem; i--)
+	{
+		a[i + 1] = a[i];
+	}
+	a[vitrithem] = phantuthem;
+	n++;
+}
+
+// Viết hàm xóa phan tử
+// Xóa nhiều phần tử
+// thêm nhiều phần tử
 int main()
 {
 	int n;
@@ -84,6 +130,15 @@ int main()
 	int *Min_2 = TimMin_2(a, n);
 	printf_s("\nMin la : %d", *Min_2);
 
+	/*ThemPhanTu(a, n, 2, 69);
+	printf_s("\n");
+	XuatMang(a, n);*/
+	SapXepMang(a, n, 't');
+	printf_s("\n");
+	XuatMang(a, n);
+	SapXepMang(a, n, 'g');
+	printf_s("\n");
+	XuatMang(a, n);
 
 
 	free(a);

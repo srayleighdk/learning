@@ -102,6 +102,14 @@ void ThemPhanTu(int *&a, int &n, int vitrithem, int phantuthem)
 }
 
 // Viết hàm xóa phan tử
+void XoaPhanTu(int *&a, int &n, int vitrixoa)
+{
+	for (int i = vitrixoa; i < n; i++)
+	{
+		a[i] = a[i + 1];
+	}
+	realloc(a, (n--) * sizeof(int));
+}
 // Xóa nhiều phần tử
 // thêm nhiều phần tử
 int main()
@@ -137,6 +145,9 @@ int main()
 	printf_s("\n");
 	XuatMang(a, n);
 	SapXepMang(a, n, 'g');
+	printf_s("\n");
+	XuatMang(a, n);
+	XoaPhanTu(a, n, 2);
 	printf_s("\n");
 	XuatMang(a, n);
 
